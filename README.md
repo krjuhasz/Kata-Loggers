@@ -45,4 +45,4 @@ StayHealthy, Inc. is now expanding into the medical monitoring market, and is in
 * Consequences: Additional development and future maintenance cost, adds complexity to the system, data retrieval times has to be configured.
 
 ## Architecture Diagram
-![architecture](https://github.com/krjuhasz/Kata-Loggers/blob/main/images/architecture.jpg?raw=true)
+![architecture](https://github.com/krjuhasz/Kata-Loggers/blob/main/images/architecture1.jpg?raw=true)
