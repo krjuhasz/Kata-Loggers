@@ -30,7 +30,7 @@ StayHealthy, Inc. is now expanding into the medical monitoring market, and is in
 ### ADR 1. On Premise Setup
 * Status: Proposed
 * Context: The application has to have a high availability and high performance.
-* Decision: The complete MonitorMe infrastructure will be deployed separately into every hosptial as a standalone on premise setup. This will ensure that the system will be independent from any external vendor or internet issues. The system will have a high level of responsivity and low response time, due to all components will be in the same local network.
+* Decision: The complete MonitorMe infrastructure will be deployed separately into every hospital as a standalone on premise setup. This will ensure that the system will be independent from any external vendor or internet issues. The system will have a high level of responsivity and low response time, due to all components will be in the same local network.
 * Consequences: This will result in a higher installation  and maintenance cost of the overall MonitorMe infrastructure..
 
 ### ADR 2. Use of a Time Series Database
@@ -43,6 +43,11 @@ StayHealthy, Inc. is now expanding into the medical monitoring market, and is in
 * Context: MonitorMe has to collect analytical data from vital sign input sources
 * Decision: A separate Message Broker and Data Collector component is needed inbetween MonitorMe and the Vital Sign Input Devices. Based on the type of the Vital Sign Inpit Device the data sending method can be PUSH or PULL type. The Message Broker and Data Collector has the ability to work with any kind of device interface and receive PUSH type of messages from them, or query an input source with a predefined time sequence then send this retrieved data towards MonitorMe via a Secure REST API.
 * Consequences: Additional development and future maintenance cost, adds complexity to the system, data retrieval times has to be configured.
+* ### ADR 4. Backup Instances
+* Status: Proposed
+* Context: MonitorMe still has to work if any of the components fails
+* Decision: A high availability failsafe setup is needed because of the critical alerting functionality of the system. 2 instance of MonitorMe and Message Broker is needed in every setup. The backup instances are monitoring the primary instance via heartbeat messages and in case of any system failure automatically takes over the tasks of the primary instances and sends an alert to the IT Operation Team
+* Consequences: Additional implementation and future operation cost, adds complexity to the system.
 
 ## Architecture Diagram
 ![architecture](https://github.com/krjuhasz/Kata-Loggers/blob/main/images/architecture2.jpg?raw=true)
